@@ -13,7 +13,7 @@ class Person {
     this.location = location;
   }
   speak() {
-    return `Hello my name is ${this.name}, I am from ${this.location}.`;
+    return `Hello my name is \u001b[32m${this.name}\u001b[30m, I am from \u001b[32m${this.location}\u001b[30m.`;
   }
 }
 
@@ -31,10 +31,10 @@ class Instructor extends Person {
     this.catchPhrase = catchPhrase;
   }
   demo(subject) {
-    console.log(`Today we are learning about \u001b[34m${subject}\u001b[30m.`);
+    console.log(`Today we are learning about \u001b[31m${subject}\u001b[30m.`);
   }
   grade(studentObj, subject) {
-    console.log(`${studentObj.name} receives a \u001b[34mperfect score\u001b[30m on ${subject}.`);
+    console.log(`\u001b[35m${studentObj.name}\u001b[30m receives a perfect score on \u001b[31m${subject}\u001b[30m.`);
   }
   scoreStudent(studentObj) {
     let gradeChange = Math.round(Math.random()) * 2 - 1;
@@ -59,16 +59,16 @@ class Student extends Person {
     this.grade = grade;
   }
   listsSubjects() {
-    this.favSubjects.forEach(arrItem => console.log(`${arrItem}`));
+    this.favSubjects.forEach(arrItem => console.log(`\u001b[32m${arrItem}\u001b[30m`));
   }
   PRAssignment(subject) {
-    console.log(`${this.name} has submitted a PR for \u001b[34m${subject}\u001b[30m.`);
+    console.log(`\u001b[32m${this.name}\u001b[30m has submitted a PR for \u001b[31m${subject}\u001b[30m.`);
   }
   sprintChallenge(subject) {
-    console.log(`${this.name} has begun sprint challenge on \u001b[34m${subject}\u001b[30m.`)
+    console.log(`\u001b[32m${this.name}\u001b[30m has begun sprint challenge on \u001b[31m${subject}\u001b[30m.`)
   }
   graduate() {
-    this.grade > 70 ? console.log (`Congratulations! You graduated with a ${this.grade}/100!`) : console.log (`Keep going! You only need at least ${71 - this.grade}% more!`);
+    this.grade > 70 ? console.log (`Congratulations! You graduated with a \u001b[32m${this.grade}\u001b[30m/100!`) : console.log (`Keep going! You only need at least \u001b[32m${71 - this.grade}\u001b[30m% more!`);
   }
 }
 
@@ -83,10 +83,10 @@ class ProjectManager extends Instructor {
     super({name, age, location, previousBackground, className, favSubjects});
   }
   standUp(slackChannel) {
-    console.log(`${this.name} announces to ${slackChannel}, \u001b[31m@channel\u001b[30m standy times!​​​​​`);
+    console.log(`\u001b[32m${this.name}\u001b[30m announces to \u001b[31m${slackChannel}\u001b[30m, @channel standy times!​​​​​`);
   }
   debugsCode(studentObj, subject) {
-    console.log(`${this.name} debugs ${studentObj.name}'s code on \u001b[34m${subject}\u001b[30m.`);
+    console.log(`\u001b[32m${this.name}\u001b[30m debugs \u001b[35m${studentObj.name}\u001b[30m's code on \u001b[31m${subject}\u001b[30m.`);
   }
 }
 
@@ -143,6 +143,11 @@ const pm = new ProjectManager({
   gradClassName: 'WEB01',
   favInstructor: 'Mr. Ed'
 })
+
+console.log('\n\n___________Color Legend___________\n\n');
+console.log('\u001b[32mthis Vars\u001b[30m');
+console.log('\u001b[35mObject Vars\u001b[30m');
+console.log('\u001b[31mPassed-In Vars\u001b[30m');
 
 console.log('\n\n___________Person___________\n\n');
 console.log('per.name',per.name);

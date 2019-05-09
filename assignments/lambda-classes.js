@@ -45,7 +45,7 @@ class Instructor extends Person {
 ////////////////////////////////
 
 class Student extends Person {
-  constructor({name, age, location, previousBackground = 'Couch Surfing', className = 'ABC123', favSubjects = ['Sleeping', 'Eating'], grade = '100' }) {
+  constructor({name, age, location, previousBackground = 'Couch Surfing', className = 'ABC123', favSubjects = ['Sleeping', 'Eating'] }) {
     super({name, age, location});
     this.previousBackground = previousBackground;
     this.className = className;

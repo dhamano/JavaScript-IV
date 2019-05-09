@@ -36,6 +36,11 @@ class Instructor extends Person {
   grade(studentObj, subject) {
     console.log(`${studentObj.name} receives a \u001b[34mperfect score\u001b[30m on ${subject}.`);
   }
+  scoreStudent(studentObj) {
+    let gradeChange = Math.round(Math.random()) * 2 - 1;
+    let changeAmount = Math.round(Math.random() * 10) * gradeChange;
+    studentObj.grade += changeAmount;
+  }
 }
 
 ////////////////////////////////
@@ -45,11 +50,12 @@ class Instructor extends Person {
 ////////////////////////////////
 
 class Student extends Person {
-  constructor({name, age, location, previousBackground = 'Couch Surfing', className = 'ABC123', favSubjects = ['Sleeping', 'Eating'], grade = '100' }) {
+  constructor({name, age, location, previousBackground = 'Couch Surfing', className = 'ABC123', favSubjects = ['Sleeping', 'Eating'], grade = 50 }) {
     super({name, age, location});
     this.previousBackground = previousBackground;
     this.className = className;
     this.favSubjects = favSubjects;
+    this.grade = grade;
   }
   listsSubjects() {
     this.favSubjects.forEach(arrItem => console.log(`${arrItem}`));
@@ -59,6 +65,9 @@ class Student extends Person {
   }
   sprintChallenge(subject) {
     console.log(`${this.name} has begun sprint challenge on \u001b[34m${subject}\u001b[30m.`)
+  }
+  graduate() {
+    this.grade > 70 ? console.log (`Congratulations! You graduated with a ${this.grade}/100!`) : console.log (`Keep going! You only need at least ${71 - this.grade}% more!`);
   }
 }
 
@@ -109,7 +118,18 @@ const stud = new Student({
   location: 'Upington',
   previousBackground: 'Business',
   className: 'WEB20',
-  favSubjects: ['Animals', 'Biology', 'Racing', 'Computers']
+  favSubjects: ['Animals', 'Biology', 'Racing', 'Computers'],
+  grade: 71
+})
+
+const studFail = new Student({
+  name: 'Robert',
+  age: 29,
+  location: 'Upington',
+  previousBackground: 'Business',
+  className: 'WEB20',
+  favSubjects: ['Animals', 'Biology', 'Racing', 'Computers'],
+  grade: 60
 })
 
 const pm = new ProjectManager({
@@ -138,6 +158,26 @@ console.log('inst.favLanguage',inst.favLanguage);
 console.log('inst.catchPhrase',inst.catchPhrase);
 inst.demo('VFX');
 inst.grade(stud, 'absentness');
+console.log('stud.grade before',stud.grade)
+inst.scoreStudent(stud);
+console.log('stud.grade changed',stud.grade)
+inst.scoreStudent(stud);
+console.log('stud.grade changed',stud.grade)
+inst.scoreStudent(stud);
+console.log('stud.grade changed',stud.grade)
+inst.scoreStudent(stud);
+console.log('stud.grade changed',stud.grade)
+inst.scoreStudent(stud);
+console.log('stud.grade changed',stud.grade)
+inst.scoreStudent(stud);
+console.log('stud.grade changed',stud.grade)
+inst.scoreStudent(stud);
+console.log('stud.grade changed',stud.grade)
+inst.scoreStudent(stud);
+console.log('stud.grade changed',stud.grade)
+inst.scoreStudent(stud);
+console.log('stud.grade changed',stud.grade)
+
 
 console.log('\n\n____________Student_____________\n\n');
 console.log('stud.name',stud.name);
@@ -149,6 +189,8 @@ console.log('stud.favSubjects',stud.favSubjects);
 stud.listsSubjects();
 stud.PRAssignment('Noodles');
 stud.sprintChallenge('Noodles');
+stud.graduate();
+studFail.graduate();
 
 console.log('\n\n____________Project Manager_____________\n\n');
 console.log('pm.name',pm.name);

@@ -40,6 +40,7 @@ class Instructor extends Person {
     let gradeChange = Math.round(Math.random()) * 2 - 1;
     let changeAmount = Math.round(Math.random() * 10) * gradeChange;
     studentObj.grade += changeAmount;
+    if(studentObj.grade > 100) { studentObj.grade = 100; }
   }
 }
 
@@ -119,7 +120,7 @@ const stud = new Student({
   previousBackground: 'Business',
   className: 'WEB20',
   favSubjects: ['Animals', 'Biology', 'Racing', 'Computers'],
-  grade: 71
+  grade: 100
 })
 
 const studFail = new Student({

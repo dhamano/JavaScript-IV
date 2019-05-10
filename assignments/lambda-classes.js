@@ -7,6 +7,15 @@
 ////////////////////////////
 
 class Person {
+  /**
+   * 
+   *  @constructor
+   *  @param {Object} attrs
+   *  @param {string} attrs.name
+   *  @param {number} attrs.age
+   *  @param {string} attrs.location
+   * 
+   **/
   constructor({name = "John Doe", age = 0, location = "The Void"}) {
     this.name = name;
     this.age = age;
@@ -24,8 +33,20 @@ class Person {
 ////////////////////////////////
 
 class Instructor extends Person {
-  constructor({name, age, location, specialty = "teaching", favLanguage = "HTML/CSS", catchPhrase ="PWNed"}) {
-    super({name, age, location});
+  /**
+   * 
+   *  @constructor
+   *  @param {Object} attrs
+   *  @param {string} attrs.name
+   *  @param {number} attrs.age
+   *  @param {string} attrs.location
+   *  @param {string} attrs.specialty
+   *  @param {string} attrs.favLanguage
+   *  @param {string} attrs.catchPhrase
+   * 
+   **/
+  constructor({specialty = "teaching", favLanguage = "HTML/CSS", catchPhrase ="PWNed", ...theRest}) {
+    super(theRest);
     this.specialty = specialty;
     this.favLanguage = favLanguage;
     this.catchPhrase = catchPhrase;
@@ -51,8 +72,20 @@ class Instructor extends Person {
 ////////////////////////////////
 
 class Student extends Person {
-  constructor({name, age, location, previousBackground = 'Couch Surfing', className = 'ABC123', favSubjects = ['Sleeping', 'Eating'], grade = 50 }) {
-    super({name, age, location});
+  /**
+   *  @constructor
+   *  @param {Object}   attrs
+   *  @param {string}   attrs.name
+   *  @param {number}   attrs.age
+   *  @param {string}   attrs.location
+   *  @param {string}   attrs.previousBackground
+   *  @param {string}   attrs.className
+   *  @param {string[]} attrs.favSubjects
+   *  @param {number}   attrs.grade
+   * 
+   **/
+  constructor({previousBackground = 'Couch Surfing', className = 'ABC123', favSubjects = ['Sleeping', 'Eating'], grade = 50, ...theRest }) {
+    super(theRest);
     this.previousBackground = previousBackground;
     this.className = className;
     this.favSubjects = favSubjects;
@@ -79,8 +112,22 @@ class Student extends Person {
 ////////////////////////////////////////
 
 class ProjectManager extends Instructor {
-  constructor({name, age, location, previousBackground, className, favSubjects, gradClassName = "CS007", favInstructor = "Bob Ross"}) {
-    super({name, age, location, previousBackground, className, favSubjects});
+  /**
+   * 
+   *  @constructor ProjectManager
+   *  @param {Object}   attrs
+   *  @param {string}   attrs.name
+   *  @param {number}   attrs.age
+   *  @param {string}   attrs.location
+   *  @param {string}   attrs.previousBackground
+   *  @param {string}   attrs.className
+   *  @param {string[]}  attrs.favSubjects
+   *  @param {string}   attrs.gradClassName
+   *  @param {string}   attrs.favInstructor
+   * 
+   **/
+  constructor({gradClassName = "CS007", favInstructor = "Bob Ross", ...theRest}) {
+    super(theRest);
   }
   standUp(slackChannel) {
     console.log(`${this.name} announces to ${slackChannel}, @channel standy times!​​​​​`);
